@@ -1,0 +1,3 @@
+[submodule "hardware/partslist"]
+	path = hardware/partslist
+	url = git@github.com:richardeoin/parts.git

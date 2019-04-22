@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name alakol-rescue)(type Legacy)(uri ${KIPRJMOD}/alakol-rescue.lib)(options "")(descr ""))
+)

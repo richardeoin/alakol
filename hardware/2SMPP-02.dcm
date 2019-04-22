@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP 2SMPP-02
+D MEMS Gauge Pressure Sensor
+K MEMS Pressure Sensor
+F https://omronfs.omron.com/en_US/ecb/products/pdf/en_a282_e1_01.pdf
+$ENDCMP
+#
+#End Doc Library
