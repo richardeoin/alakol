@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Alakol</title>
+    <meta name="description" content="Omron M2 repurposed as a datalogger and motor controller">
+
+    <!-- <link rel="canonical" href=""> -->
+    <!-- <link rel="stylesheet" href="{{ "/main.css" | prepend: site.baseurl }}"> -->
+  </head>
+
+  <body>
+
+    <form id="control" action="/command" method="post">
+      <div>
+        <label for="motor-speed">Set motor speed</label>
+         <select name="motor-speed">
+          <option value="off">Off</option>
+          <option value="10">10%</option>
+          <option value="20">20%</option>
+          <option value="30">30%</option>
+          <option value="40">40%</option>
+          <option value="50">50%</option>
+          <option value="60">60%</option>
+          <option value="70">70%</option>
+          <option value="80">80%</option>
+          <option value="90">90%</option>
+          <option value="100">100%</option>
+        </select>
+      </div>
+      <div>
+        <label for="to">Set valve state to</label>
+         <select name="valve-state">
+           <option value="open">Open</option>
+           <option value="closed">Closed</option>
+        </select>
+      </div>
+      <div>
+        <input type="submit"></input>
+      </div>
+    </form>
+  </body>
+</html>
