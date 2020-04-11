@@ -1,5 +1,5 @@
 Drill report for /kicad-project/hardware/alakol.kicad_pcb
-Created on Sat Apr 18 10:51:23 2020
+Created on Sat Apr 18 11:31:06 2020
 
 Copper Layer Stackup:
     =============================================================
@@ -12,7 +12,7 @@ Copper Layer Stackup:
 Drill file 'alakol.drl' contains
     plated through holes:
     =============================================================
-    T1  0.30mm  0.012"  (166 holes)
+    T1  0.30mm  0.012"  (167 holes)
     T2  0.35mm  0.014"  (4 holes)
     T3  0.90mm  0.035"  (6 holes)
     T4  1.00mm  0.039"  (15 holes)
@@ -21,7 +21,7 @@ Drill file 'alakol.drl' contains
     T7  1.80mm  0.071"  (4 holes)
     T8  2.50mm  0.098"  (2 holes)
 
-    Total plated holes count 210
+    Total plated holes count 211
 
 
 Not plated through holes are merged with plated holes
