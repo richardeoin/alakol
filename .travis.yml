@@ -1,0 +1,35 @@
+language: rust
+
+rust:
+  - nightly
+#  - beta
+#  - stable
+
+cache: cargo
+
+branches:
+  only:
+#    - staging
+#    - trying
+    - master
+
+before_script:
+  - rustup target add thumbv7em-none-eabihf
+
+env:
+- HW=hardware0
+- HW=hardware1
+
+matrix:
+  # allow_failures:
+  #   - rust: nightly
+  fast_finish: true
+
+
+script:
+  - cd firmware
+  # RUSTFLAGS="-D warnings"
+  - cargo build --verbose --release --no-default-features --features $HW -Z features=build_dep
+
+notifications:
+  email: false
