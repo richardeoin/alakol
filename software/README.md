@@ -37,11 +37,11 @@ from alakol_datalogger import AlakolSocket
 
 # Connect
 streaming = AlakolSocket()
-streaming.connect('192.168.x.x', 8080)
+streaming.connect("192.168.x.x", 8080)
 
 # Iterate over received datapoints
 for idx, data in enumerate(streaming.cbor_receive()):
-    gauge_pressure = data['gauge_pressure']
+    gauge_pressure = data["gauge_pressure"]
     print(gauge_pressure)
 ```
 
@@ -51,7 +51,7 @@ Commanding is even easier. Under the hood this just uses [requests](https://requ
 from alakol_command import AlakolCommand
 
 # Connect
-alakol = AlakolCommand('192.168.x.x')
+alakol = AlakolCommand("192.168.x.x")
 
 # Set motor state (percentage) and value (True = close, False = open)
 alakol.command(80, True)     # Inflate at 80%

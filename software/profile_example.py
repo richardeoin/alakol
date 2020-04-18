@@ -12,12 +12,13 @@ from alakol_command import AlakolCommand
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('ip_addr', nargs='?', default='192.168.1.77')
+    parser.add_argument("ip_addr", nargs="?",
+                        default="192.168.1.77")
     args = parser.parse_args()
 
     # Command
     alakol = AlakolCommand(args.ip_addr)
-    alakol.command(80, True)     # Inflate at 80%
+    alakol.command(80, True)  # Inflate at 80%
 
     # Stream data
     streaming = AlakolSocket()
@@ -25,10 +26,10 @@ if __name__ == "__main__":
     print(f"Connected to {args.ip_addr}:8080 !")
 
     for idx, data in enumerate(streaming.cbor_receive()):
-        gauge_pressure = data['gauge_pressure']
+        gauge_pressure = data["gauge_pressure"]
         print(gauge_pressure)
 
         if gauge_pressure > 20:
-            alakol.command(0, True) # Hold
+            alakol.command(0, True)  # Hold
             time.sleep(3)
-            alakol.command()     # Deflate
+            alakol.command()  # Deflate

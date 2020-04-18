@@ -8,6 +8,7 @@ import argparse
 import os
 from time import gmtime, strftime, time
 
+
 class AlakolSocket:
     """Read data from Alakol Datalogger, via a TCP socket
     """
@@ -21,7 +22,7 @@ class AlakolSocket:
     def cbor_receive(self):
         while True:
             chunk = self.sock.recv(2048)
-            if chunk == b'':
+            if chunk == b"":
                 raise RuntimeError("socket connection broken")
             # Try to decode as CBOR
             try:
@@ -33,24 +34,41 @@ class AlakolSocket:
     def disconnect(self):
         self.sock.disconnect()
 
+
 # ------------------------------ main ------------------------------
 
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('ip_addr', nargs='?', default='192.168.1.77')
-    parser.add_argument('-n', '--no-save',
-                        dest='no_save', action='store_true',
-                        help='Don\'t save the data to file')
-    parser.add_argument('-s', '--silent',
-                        dest='silent', action='store_true',
-                        help='Don\'t print whilst receving data')
-    parser.add_argument('-d', '--decimate',
-                        dest='n', default='1',
-                        help='Record only every Nth sample, drop the rest')
-    parser.add_argument('-f', '--filename',
-                        dest='filename', default='alakol_datalogger',
-                        help='Set the beginning of the filename')
+    parser.add_argument("ip_addr", nargs="?", default="192.168.1.77")
+    parser.add_argument(
+        "-n",
+        "--no-save",
+        dest="no_save",
+        action="store_true",
+        help="Don't save the data to file",
+    )
+    parser.add_argument(
+        "-s",
+        "--silent",
+        dest="silent",
+        action="store_true",
+        help="Don't print whilst receving data",
+    )
+    parser.add_argument(
+        "-d",
+        "--decimate",
+        dest="n",
+        default="1",
+        help="Record only every Nth sample, drop the rest",
+    )
+    parser.add_argument(
+        "-f",
+        "--filename",
+        dest="filename",
+        default="alakol_datalogger",
+        help="Set the beginning of the filename",
+    )
     args = parser.parse_args()
 
     # Decimation
@@ -74,7 +92,7 @@ if __name__ == "__main__":
 
         for idx, data in enumerate(streaming.cbor_receive()):
             if (idx % decimation) == 0:
-                record = { 'timestamp': time() }
+                record = {"timestamp": time()}
                 record.update(data)
 
                 if not args.silent:
@@ -88,6 +106,8 @@ if __name__ == "__main__":
                         wrote_header = True
 
                     # Write record to CSV
-                    values = [f"{record[key]:.3f}"if record[key] else "" for key in record]
+                    values = [
+                        f"{record[key]:.3f}" if record[key] else "" for key in record
+                    ]
                     csv_fp.write(", ".join(values) + os.linesep)
                     csv_fp.flush()
