@@ -5,6 +5,10 @@ for superpressure balloon design. Additionally the technique of
 "pre-stretching" can be used to modify the balloon's surface stress
 distribution.
 
+![Mylar balloon shape with stress distribution](mylar_balloon_crimping_hot.png)
+
+**Example plot of stress in a mylar balloon shape, before pre-stretching**
+
 However the understanding of this process, especially for the [mylar
 balloon](mylar-balloon) shape popular among amateurs for its simplicity,
 has not developed much beyond alchemy. At least in part this is due to a
@@ -30,14 +34,18 @@ solenoid controlled valve. This is not the first superpressure balloon
 project to re-use the Omron M2 BPM (was this Leo?) but it takes the
 additional step of building a datalogger around it.
 
+![Assembled unit without screen](hardware/photos/alakol_assembled_no_screen.jpg)
+
+🚧🚧🚧🚧
 WARNING: The Omron M2 Blood Pressure Monitor is a consumer medical device,
-but after the modifications described here it is *no longer suitable for
-its original purpose* nor should it be used on people (or anything alive
+but after the modifications described here it is **no longer suitable for
+its original purpose** nor should it be used on people (or anything alive
 really). Before modifying an Omron M2 you must ensure it is surpless to any
 medical requirements, and that it is clearly marked as non-medical. After
 modification the original display panel will no longer fit, which ensures
 the extent of the modification is abundantly clear to anyone. The Ormon M2
 can usually be purchased off the shelf at consumer stores.
+🚧🚧🚧🚧🚧
 
 Project Goals:
 
@@ -72,6 +80,8 @@ whilst a separate TCP server on port 8080 streams the measurement data at a
 ### Data Analysis
 
 There are some python scripts. See the [software](software/) directory.
+
+![Assembled unit powered on](hardware/photos/alakol_powered_on.jpg)
 
 ### License
 

@@ -25,7 +25,7 @@ Maybe this works under WSL?
 
 # Examples
 
-See [/profile_example.py][]
+See [profile_example.py](profile_example.py)
 
 # Usage
 
@@ -45,7 +45,7 @@ for idx, data in enumerate(streaming.cbor_receive()):
     print(gauge_pressure)
 ```
 
-Commanding is even easier. Under the hood this just uses [requests](https://requests.readthedocs.io/).
+Commanding is even easier. Under the hood this uses [requests](https://requests.readthedocs.io/).
 
 ```python3
 from alakol_command import AlakolCommand
