@@ -6,10 +6,10 @@ for superpressure balloon design. Additionally the technique of
 distribution.
 
 However the understanding of this process, especially for the [mylar
-balloon][] shape popular among amateurs for its simplicity, has not
-developed much beyond alchemy. At least in part this is due to a lack of
-data and repeatable experiments, and difficulties in controlling external
-variables given that some experiments last for 10s of hours.
+balloon](mylar-balloon) shape popular among amateurs for its simplicity,
+has not developed much beyond alchemy. At least in part this is due to a
+lack of data and repeatable experiments, and difficulties in controlling
+external variables given that some experiments last for 10s of hours.
 
 _Alakol_ is a specialised datalogger for collecting data about the
 pre-stretching process. It measures:
