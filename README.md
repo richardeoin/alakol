@@ -10,7 +10,7 @@ distribution.
 **Example plot of stress in a mylar balloon shape, before pre-stretching**
 
 However the understanding of this process, especially for the [mylar
-balloon](mylar-balloon) shape popular among amateurs for its simplicity,
+balloon][mylar-balloon] shape popular among amateurs for its simplicity,
 has not developed much beyond alchemy. At least in part this is due to a
 lack of data and repeatable experiments, and difficulties in controlling
 external variables given that some experiments last for 10s of hours.
@@ -69,7 +69,7 @@ The hardware is designed in KiCad. See the [hardware](hardware/) directory.
 The firmware runs on an STM32 microcontroller, and is written in Rust. See
 the [firmware](firmware/) directory.
 
-A small [OLED display](adafruit-938) displays measurements, and a very
+A small [OLED display][adafruit-938] displays measurements, and a very
 simple user interfaces allows you to cycle between screens, control the
 motor and valve, and zero the gauge pressure reading.
 

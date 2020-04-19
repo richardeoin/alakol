@@ -2,9 +2,12 @@ _Alakol_ software
 ======
 
 A selection of scripts for capturing data / commanding _alakol_. Data is
-streamed over TCP port 8080 in [CBOR](https://cbor.io/) packed format.
+streamed over TCP port 8080 in [CBOR](https://cbor.io/) packed format. The
+control interface is a HTTP server on TCP port 80.
 
-The control interface is a HTTP server on TCP port 80.
+For live streaming data, there is a jupyter notebook.
+
+![Jupyter Notebook with live plotting](jupyter_screenshot.png)
 
 # Getting Started
 
@@ -17,17 +20,23 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-There's also a jupyter notebook for plotting streamed data live.
-
 ## On Windows
 
 Maybe this works under WSL?
 
-# Examples
+# Standalone Examples
+
+### Logging to CSV file
+
+```
+python alakol_datalogger.py --filename pressure_log1 192.168.xx.xx
+```
+
+### Sending commands:
 
 See [profile_example.py](profile_example.py)
 
-# Usage
+# Usage from a python script
 
 The `AlakolSocket` class provides a method `cbor_receive` that yields each
 datapoint.

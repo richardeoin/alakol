@@ -30,7 +30,7 @@
 
 | | |
 | --- | --- |
-| Schematic | [svg](output/schematic/svg/alakol.svg)/[pdf](output/schemati/pdf/alakol.pdf)
+| Schematic | [svg](output/schematic/svg/alakol.svg)/[pdf](output/schematic/pdf/alakol.pdf)
 | BOM | [csv](output/bom/bom.csv)
 | Layout | [svg](output/layout/svg)/[pdf](output/layout/pdf)/[dxf](output/layout/dxf)
 | Gerbers | [gerbers](output/layout/gerber)
