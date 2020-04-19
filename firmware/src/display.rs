@@ -134,7 +134,7 @@ screen! {
         CPUTemperature, cpu_temperature: (f32, 0.0, "CPU T:  {:.0} °C", 1),
         KTemperature, k_temperature: (TReading, TReading::NONE, "Thermo: {} °C", 2),
         SensorTemperature, sensor_temperature: (f32, 0.0, "Sensor: {:.1} °C", 3),
-        Pressure, pressure: (f32, 0.0, "Pressure: {:.2} hPa", 4),
+        Pressure, pressure: (f32, 0.0, "Pressure: {:.2} kPa", 4),
         Gauge, gauge: (f32, 0.0, "Gauge P: {:3.3} kPa", 5) => none, gauge_calibrate,
     ]
 }

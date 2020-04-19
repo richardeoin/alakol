@@ -39,8 +39,8 @@ impl ThermocoupleReading {
 /// Collection of all sensor data
 #[derive(Debug, PartialEq, Serialize)]
 pub struct SensorData {
-    pub ms5611_temperature: f32,
-    pub ms5611_pressure: f32,
+    pub ms5611_temperature_c: f32,
+    pub ms5611_pressure_kpa: f32,
     pub internal_temperature: f32,
     pub gauge_pressure: f32,
     pub thermocouple_temperature: ThermocoupleReading,
@@ -164,8 +164,8 @@ impl Sensors {
     /// Collect data from the various sensors
     pub fn collect_data(&mut self) -> SensorData {
         SensorData {
-            ms5611_temperature: self.ms5611_temperature(),
-            ms5611_pressure: self.ms5611_pressure(),
+            ms5611_temperature_c: self.ms5611_temperature_c(),
+            ms5611_pressure_kpa: self.ms5611_pressure_kpa(),
             internal_temperature: self.internal_temperature(),
             gauge_pressure: self.gauge_pressure(),
             thermocouple_temperature: self.thermocouple(),
@@ -174,15 +174,15 @@ impl Sensors {
     }
 
     /// Returns last temperature reading from MS5611, in °C
-    fn ms5611_temperature(&self) -> f32 {
+    fn ms5611_temperature_c(&self) -> f32 {
         self.latest_ms5611_reading
             .expect("MS5611 not read yet!")
             .temperature as f32
             / 100.0
     }
 
-    /// Returns last temperature reading from MS5611, in hPa
-    fn ms5611_pressure(&self) -> f32 {
+    /// Returns last pressure reading from MS5611, in kPa
+    fn ms5611_pressure_kpa(&self) -> f32 {
         self.latest_ms5611_reading
             .expect("MS5611 not read yet!")
             .pressure as f32

@@ -534,8 +534,8 @@ fn main() -> ! {
             // Update measurement screen
             display.cpu_temperature(data.internal_temperature);
             display.k_temperature(data.thermocouple_temperature);
-            display.sensor_temperature(data.ms5611_temperature);
-            display.pressure(data.ms5611_pressure);
+            display.sensor_temperature(data.ms5611_temperature_c);
+            display.pressure(data.ms5611_pressure_kpa);
             display.gauge(data.gauge_pressure);
 
             // Update ethernet screen
