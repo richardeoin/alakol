@@ -66,7 +66,7 @@ The hardware is designed in KiCad. See the [hardware](hardware/) directory.
 
 ### Firmware
 
-The firmware runs on an STM32 microcontroller, and is written in Rust. See
+The firmware runs on a STM32 microcontroller, and is written in Rust. See
 the [firmware](firmware/) directory.
 
 A small [OLED display][adafruit-938] displays measurements, and a very
