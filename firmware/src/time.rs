@@ -2,7 +2,7 @@
 use core::fmt;
 
 #[derive(Copy, Clone, Debug)]
-pub struct SimpleTime(pub u32);
+pub struct SimpleTime(pub i64);
 
 impl fmt::Display for SimpleTime {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {

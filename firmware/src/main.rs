@@ -9,7 +9,7 @@
 
 extern crate cortex_m_rt as rt;
 use core::mem;
-use core::sync::atomic::{AtomicI32, AtomicU16, AtomicU32, Ordering};
+use core::sync::atomic::{AtomicI32, AtomicU16, Ordering};
 use rt::{entry, exception};
 
 extern crate alloc;
@@ -129,7 +129,7 @@ fn flash_boot_init(flash: &stm32::FLASH) {
 
 const ORDER: Ordering = Ordering::Relaxed;
 
-static TIME: AtomicU32 = AtomicU32::new(0);
+static mut TIME: i64 = 0;
 static PROC: AtomicI32 = AtomicI32::new(0);
 
 static VALVE_STATE: AtomicU16 = AtomicU16::new(0);
@@ -460,8 +460,9 @@ fn main() -> ! {
 
     let mut a = 0i32;
     let mut eth_up = false;
+    let mut last_ui_time: i64 = 0;
     loop {
-        let time = TIME.load(ORDER);
+        let time = cortex_m::interrupt::free(|_| unsafe { TIME });
 
         act_led.set_high().unwrap();
 
@@ -470,17 +471,25 @@ fn main() -> ! {
             // LEFT
             display.click_screen(io::Buttons::Left);
             PROC.store(0, ORDER); // Force update
+            last_ui_time = time;
         }
         if io::get_button(io::Buttons::Right) != 0 {
             // RIGHT
             display.click_screen(io::Buttons::Right);
             PROC.store(0, ORDER); // Force update
+            last_ui_time = time;
         }
 
         // Quadrature encoder
         a = match io::get_quadrature_encoder() {
-            io::QuadratureEncoderEvent::Increment => a + 1,
-            io::QuadratureEncoderEvent::Decrement => a - 1,
+            io::QuadratureEncoderEvent::Increment => {
+                last_ui_time = time;
+                a + 1
+            }
+            io::QuadratureEncoderEvent::Decrement => {
+                last_ui_time = time;
+                a - 1
+            }
             _ => a,
         };
         a = display.set_cursor_line(a);
@@ -550,7 +559,11 @@ fn main() -> ! {
             // Update time screen
             display.time(time::SimpleTime(time));
 
-            display.draw_screen();
+            // 2 hour timeout
+            let display_saver = time > (last_ui_time + 3_600_000);
+
+            // Draw
+            display.draw_screen(display_saver);
 
             Some(data)
         } else {
@@ -574,7 +587,9 @@ fn ETH() {
 
 #[exception]
 fn SysTick() {
-    TIME.fetch_add(1, Ordering::Relaxed);
+    let time = unsafe { &mut TIME };
+    *time += 1;
+
     PROC.fetch_sub(1, Ordering::Relaxed);
     io::debounce_tick(false);
 }

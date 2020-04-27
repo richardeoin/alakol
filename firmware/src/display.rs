@@ -206,14 +206,18 @@ impl Oled {
             Screen::Time => TimeScreen::click(self, button, self.cursor_line),
         };
     }
-    pub fn draw_screen(&mut self) {
+    pub fn draw_screen(&mut self, saver: bool) {
         self.disp.clear();
-        match self.current_screen {
-            Screen::EthernetStatus => self.draw_ethernet_status_screen(),
-            Screen::Measurement => self.draw_measurement_screen(),
-            Screen::MotorControl => self.draw_motor_control_screen(),
-            Screen::Time => self.draw_time_screen(),
-        };
+        if !saver {
+            match self.current_screen {
+                Screen::EthernetStatus => self.draw_ethernet_status_screen(),
+                Screen::Measurement => self.draw_measurement_screen(),
+                Screen::MotorControl => self.draw_motor_control_screen(),
+                Screen::Time => self.draw_time_screen(),
+            };
+        } else {
+            self.disp.flush().unwrap();
+        }
     }
 
     /// Init
