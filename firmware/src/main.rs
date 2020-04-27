@@ -433,6 +433,8 @@ fn main() -> ! {
         valve_close,
         valve_open,
     );
+    display.version(build_info::PKG_VERSION);
+    display.build(build_info::GIT_VERSION.unwrap());
 
     println!(log, "OK");
 

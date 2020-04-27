@@ -154,6 +154,8 @@ screen! {
 screen! {
     TimeScreen, time, draw_time_screen, "Time" => [
         Time, time: (SimpleTime, SimpleTime(0), "Uptime: {}", 1),
+        Version, version: (&'static str, "", "Version: {}", 2),
+        Build, build: (&'static str, "", "Build: {}", 3),
     ]
 }
 
