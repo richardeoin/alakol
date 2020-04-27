@@ -153,9 +153,9 @@ impl Sensors {
             .unwrap();
 
         self.latest_ms5611_reading = Some(sample);
-        // Sensor appears to read about 8ºC above ambient
+        // Sensor appears to read about 2ºC above cold junction temperature
         self.thermocouple = self.thermocouple.with_reference_temperature(
-            ((sample.temperature - 8) as f32 / 100.0).celsius(),
+            ((sample.temperature - 2) as f32 / 100.0).celsius(),
         );
     }
 
